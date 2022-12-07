@@ -6,33 +6,6 @@ const wordList = document.querySelector("#wordList")
 
 // https://developer.chrome.com/docs/extensions/mv3/messaging/
 
-function filterPosts(posts) {
-    console.log(posts)
-}
-
-
-(async () => {
-    const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
-    console.log(tab)
-
-    var port = chrome.tabs.connect(tab.id, { name: "PURGIN" });
-
-    port.postMessage({ type: "GET_POSTS" })
-
-    port.onMessage.addListener(function (msg) {
-        console.log(`Received msg ${msg.type}`)
-        switch(msg.type) {
-            case "GET_POSTS":
-                // faccio filtering
-                break;
-             default:
-                 console.error("boom")
-        }
-    });
-
-})();
-
-
 function addWord(word) {
     // add word to db
     // add word to dom
