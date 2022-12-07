@@ -6,37 +6,34 @@ const wordList = document.querySelector("#wordList")
 
 // https://developer.chrome.com/docs/extensions/mv3/messaging/
 
-function filterPosts(posts){
+function filterPosts(posts) {
     console.log(posts)
 }
 
+
 (async () => {
-    const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
+    const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
     console.log(tab)
-    const response = await chrome.tabs.sendMessage(tab.id, { type: "GET_POSTS"});
-    // do something with response here, not outside the function
-    console.log(response);
-  })();
 
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-      console.log(sender.tab ?
-                  "from a content script:" + sender.tab.url :
-                  "from the extension");
-        
-        switch(request.type) {
+    var port = chrome.tabs.connect(tab.id, { name: "PURGIN" });
+
+    port.postMessage({ type: "GET_POSTS" })
+
+    port.onMessage.addListener(function (msg) {
+        console.log(`Received msg ${msg.type}`)
+        switch(msg.type) {
             case "GET_POSTS":
-                const postsToRemove = filterPosts()
-                sendResponse({ type: "POSTS_REMOVE", data: postsToRemove })
+                // faccio filtering
                 break;
-            default:
-                console.error("boom")
-            
+             default:
+                 console.error("boom")
         }
-    }
-  );
+    });
 
-function addWord(word){
+})();
+
+
+function addWord(word) {
     // add word to db
     // add word to dom
     createListItem(word)
@@ -47,11 +44,11 @@ function removeWord(word) {
     // add word from dom
 }
 
-function removeBtnHandler(e, word, row)  {
+function removeBtnHandler(e, word, row) {
     row.parentNode.removeChild(row)
 }
 
-function addWordToList(word){
+function addWordToList(word) {
     let li = document.createElement("li")
     let text = document.createElement("p")
     text.innerHTML = word
@@ -65,9 +62,9 @@ function addWordToList(word){
 
 
 
-function wordAddBtnHandler(e){
+function wordAddBtnHandler(e) {
     const word = wordInput.value
-    if(word === undefined || word == "" || !word) return
+    if (word === undefined || word == "" || !word) return
     addWordToList(word)
     wordInput.value = ""
 
