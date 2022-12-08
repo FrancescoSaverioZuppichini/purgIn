@@ -5,13 +5,13 @@
 
 LinkedIn extension to automatically remove posts containing user-defined words.
 
-![image](image.png)
+![alt](image.png)
 
 Every LinkedIn post containing words `chatgpt, nft, web3` will be removed from your feed.
 
 Here an example with the word `the`, so basically almost every posts
 
-![alt](purgin_example.webm)
+![alt](purgin_example.gif)
 
 ## Install it
 
