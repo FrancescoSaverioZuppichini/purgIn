@@ -9,7 +9,10 @@ const wordList = document.querySelector("#wordList")
 
 class WordsStorage {
     getWords() {
-        return chrome.storage.local.get([APP_NAME]).then(result => JSON.parse(result[APP_NAME]))
+        return chrome.storage.local.get([APP_NAME]).then(result => {
+            if (result[APP_NAME] === undefined) result[APP_NAME] = "[]"
+            return JSON.parse(result[APP_NAME])
+        })
     }
 
     addWord(word) {
