@@ -1,5 +1,3 @@
-console.log("heyyyy");
-
 let postsIdTONodes = {}
 let newPostId = 0
 
@@ -18,9 +16,9 @@ function handleGetPosts() {
     return posts
 }
 
-function handleDeletePosts(posts){
-    for(let post of posts){
-        const {id} = post
+function handleDeletePosts(posts) {
+    for (let post of posts) {
+        const { id } = post
         const node = postsIdTONodes[id]
         node.parentNode.removeChild(node)
         delete postsIdTONodes[id]
@@ -33,22 +31,21 @@ port.postMessage({ type: "CONNECTION" })
 
 port.onMessage.addListener(function (msg) {
     console.log(`Received msg ${msg.type}`)
-    console.log(msg)
     console.table(msg.data)
     switch (msg.type) {
         case "GET_POSTS":
             const posts = handleGetPosts()
             // fetch posts
-            port.postMessage({ type: "GET_POSTS", data: posts })
+            port.postMessage({ type: "GET_POSTS_TO_DELETE", data: posts })
             break;
         case "DELETE_POSTS":
             handleDeletePosts(msg.data)
             break;
         default:
-            console.error("boom")
+            console.error("Boom")
     }
 });
 
 window.addEventListener("scroll", () => port.postMessage({ type: "CONNECTION" }))
 
-setInterval(() => port.postMessage({ type: "CONNECTION" }), 1000)
+// setInterval(() => port.postMessage({ type: "CONNECTION" }), 1000)
