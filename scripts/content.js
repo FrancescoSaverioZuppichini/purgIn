@@ -54,4 +54,4 @@ port.onMessage.addListener(function (msg) {
 
 window.addEventListener("scroll", () => port.postMessage({ type: "CONNECTION" }))
 
-// setInterval(() => port.postMessage({ type: "CONNECTION" }), 1000)
+setInterval(() => port.postMessage({ type: "CONNECTION" }), 1000)
