@@ -3,10 +3,16 @@ let newPostId = 0
 
 function handleGetPosts() {
     const postsNodes = document.querySelectorAll("div.scaffold-finite-scroll__content > div")
+    console.log(`Found ${postsNodes.length} posts`)
     let posts = []
     for (let node of postsNodes) {
         try {
+            if(node.id) {
+                console.log(`Post with ${node.id} already visited, skipping`)
+                continue
+            }
             posts.push({ "text": node.querySelector("span.break-words > span").textContent, "id": newPostId })
+            node.id = newPostId
             postsIdTONodes[newPostId] = node
             newPostId++
         } catch (TypeError) {
