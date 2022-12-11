@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "PurgeIn",
   "description": "Purge your LikenIn feed from stuff you don't want to see.",
-  "version": "0.0.1",
+"version": "0.0.1",
   "action": {
     "default_popup": "popup.html"
   },
@@ -16,7 +16,6 @@
     }
   ],
   "permissions": [
-    "storage",
-    "activeTab"
+    "storage"
   ]
 }
