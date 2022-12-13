@@ -15,6 +15,8 @@ Here an example with the word `the`, so basically almost every posts
 
 ## Install it
 
+PurgIn can be installed from the [**chrome store**](https://chrome.google.com/webstore/search/purgin?hl=it&authuser=0)
+
 To install it locally, clone this repo then
 
 - go to your extension setting page `chrome://extensions/`
