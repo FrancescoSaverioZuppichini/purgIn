@@ -5,6 +5,9 @@
 
 LinkedIn extension to automatically remove posts containing user-defined words.
 
+PurgIn can be installed from the [**chrome store**](https://chrome.google.com/webstore/search/purgin?hl=it&authuser=0)
+
+
 ![alt](image.png)
 
 Every LinkedIn post containing words `chatgpt, nft, web3` will be removed from your feed.
@@ -15,7 +18,11 @@ Here an example with the word `the`, so basically almost every posts
 
 ## Install it
 
+### Chrome Store
+
 PurgIn can be installed from the [**chrome store**](https://chrome.google.com/webstore/search/purgin?hl=it&authuser=0)
+
+### Local
 
 To install it locally, clone this repo then
 
