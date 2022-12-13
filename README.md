@@ -3,7 +3,7 @@
 > **Warning**
 > Work in Progress
 
-LinkedIn extension to automatically remove posts containing user-defined words.
+Chrome extension to automatically remove **LinkedIn** posts containing user-defined words.
 
 PurgIn can be installed from the [**chrome store**](https://chrome.google.com/webstore/search/purgin?hl=it&authuser=0)
 
